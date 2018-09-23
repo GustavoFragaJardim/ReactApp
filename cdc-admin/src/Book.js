@@ -63,8 +63,8 @@ class BookForm extends Component {
                         <select name='autorId' id="authorId" onChange={this.setAuthor}>
                             <option value=''>Selecione um autor</option>
                             {
-                                this.props.authors.map(function (author) {
-                                    return <option value={author.id}>{author.name} </option>
+                                this.props.authors.map(function (authors) {
+                                    return (<option key={authors.id} value={authors.id}>{authors.nome} </option>)
                                 })
                             }
                         </select>

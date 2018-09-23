@@ -10,11 +10,7 @@ class AuthorForm extends Component {
     constructor() {
         super();
         this.state = { nome: '', email: '', senha: '' };
-        this.setEmail = this.setEmail.bind(this)
-        this.setNome = this.setNome.bind(this)
-        this.setSenha = this.setSenha.bind(this)
         this.sendForm = this.sendForm.bind(this)
-
     }
     sendForm(evento) {
         evento.preventDefault();
@@ -43,22 +39,19 @@ class AuthorForm extends Component {
         });
     }
 
-    setNome(evento) {
-        this.setState({ nome: evento.target.value })
+    saveUpdate(inputName, evento) {
+        var alteredField = {};
+        alteredField[inputName] = evento.target.value;
+        this.setState(alteredField)
     }
-    setSenha(evento) {
-        this.setState({ senha: evento.target.value })
-    }
-    setEmail(evento) {
-        this.setState({ email: evento.target.value })
-    }
+
     render() {
         return (
             <div className="pure-form pure-form-aligned">
                 <form onSubmit={this.sendForm} method='post' className="pure-form pure-form-aligned">
-                    <CustomizedInput label='nome' id='nome' type='text' name='nome' value={this.state.nome} onChange={this.setNome} />
-                    <CustomizedInput label='email' id='email' type='email' name='email' value={this.state.email} onChange={this.setEmail} />
-                    <CustomizedInput label='senha' id='senha' type='password' name='senha' value={this.state.senha} onChange={this.setSenha} />
+                    <CustomizedInput label='nome' id='nome' type='text' name='nome' value={this.state.nome} onChange={this.saveUpdate.bind(this, 'nome')} />
+                    <CustomizedInput label='email' id='email' type='email' name='email' value={this.state.email} onChange={this.saveUpdate.bind(this, 'email')} />
+                    <CustomizedInput label='senha' id='senha' type='password' name='senha' value={this.state.senha} onChange={this.saveUpdate.bind(this, 'senha')} />
                     <div className="pure-control-group">
                         <label></label>
                         <button type="submit" className="pure-button pure-button-primary">Gravar</button>
