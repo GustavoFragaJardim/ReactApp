@@ -124,8 +124,13 @@ export default class AuthorBox extends Component {
     render() {
         return (
             <div>
-                <AuthorForm />
-                <AuthorTable lista={this.state.lista} />
+                <div className="header">
+                    <h1>Criar Autores</h1>
+                </div>
+                <div>
+                    <AuthorForm />
+                    <AuthorTable lista={this.state.lista} />
+                </div>
             </div>
         );
     }
